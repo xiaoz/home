@@ -1,0 +1,193 @@
+<style>
+.box {
+margin: 5px;
+background: #D8D5D2;
+font-size: 11px;
+line-height: 1.4em;
+float: left;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+.col2 {
+width: 350px;
+}
+.row2 {
+height: 80px;
+}
+.col1 {
+width: 170px;
+}
+.row1 {
+height: 80px;
+}
+.col3 {
+width: 530px;
+}
+.row3 {
+height: 80px;
+}
+.transitions-enabled.masonry, .transitions-enabled.masonry .masonry-brick {
+-webkit-transition-duration: 0.7s;
+-moz-transition-duration: 0.7s;
+-o-transition-duration: 0.7s;
+transition-duration: 0.7s;
+}
+
+</style>
+<script>
+var boxMaker = {};
+
+boxMaker.lorem =['Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                 'Phasellus eu interdum odio',
+                 'Cras lobortis mauris vitae tellus consectetur sit amet cursus ipsum vestibulum',
+                 'Duis facilisis sodales tristique',
+                 ' Vivamus aliquet, est a rhoncus dapibus, velit tortor tempor turpis,', 
+                 'a pharetra diam lacus a metus. Donec gravida faucibus magna',
+                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'  , 
+                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'  , 
+                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'  , 
+                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'   
+                 
+                 ]
+boxMaker.loremLen = boxMaker.lorem.length;
+  
+boxMaker.makeBoxes = function() {
+  var boxes = [],
+    //  count = Math.random()*4;
+  		count = 10;
+  		var flag3 = false ;
+  		var flag2 = false ;
+  		var flag1 = false ;
+  do{
+  var len = Math.ceil( Math.random()*3);
+
+  if(len == 3){
+      if(flag3 == false){
+	    	for (var i=0; i < 2; i++ ) {
+	    		var box = document.createElement('div'),
+		        text = document.createTextNode( boxMaker.lorem[i] );
+		        if(i == 1){
+			        len = len-2;
+		        }
+		    	box.className = 'box col'+len+' row'+len;
+		    	box.appendChild( text );
+		    	boxes.push( box );
+	    	}
+	    	flag3 =true;
+      }
+  }else if(len == 2){
+  	if(flag2 == false){
+  		var box = document.createElement('div'),
+	     	 text = document.createTextNode( boxMaker.lorem[i] );
+	    box.className = 'box col'+len+' row'+len;
+	    box.appendChild( text );
+	    boxes.push( box );
+	    
+  		var type = Math.ceil( Math.random()*2);
+		if(type == 1){
+			var box = document.createElement('div'),
+  	     	 text = document.createTextNode( boxMaker.lorem[i] );
+		    box.className = 'box col2 row2';
+		    box.appendChild( text );
+		    boxes.push( box );
+
+		}else{
+			for (var i=0; i < 2; i++ ) {
+	    		var box = document.createElement('div'),
+	    	      text = document.createTextNode( boxMaker.lorem[i] );
+			    box.className = 'box col1 row1';
+			    box.appendChild( text );
+			    boxes.push( box );
+	    	}
+		}
+		flag2 =true;
+      }
+  }else if(len == 1){
+  	if(flag1 == false){
+  		var box = document.createElement('div'),
+    	 text = document.createTextNode( boxMaker.lorem[i] );
+	   box.className = 'box col'+len+' row'+len;
+	   box.appendChild( text );
+	   boxes.push( box );
+	   var type = Math.ceil( Math.random()*3);
+
+	   if(type == 1){
+			var box = document.createElement('div'),
+ 	     	text = document.createTextNode( boxMaker.lorem[i] );
+		    box.className = 'box col3 row3';
+		    box.appendChild( text );
+		    boxes.push( box );
+
+		}else if(type == 2){
+			for (var i=0; i < 3; i++ ) {
+	    		var box = document.createElement('div'),
+	    	      text = document.createTextNode( boxMaker.lorem[i] );
+			    box.className = 'box col1 row1';
+			    box.appendChild( text );
+			    boxes.push( box );
+	    	}
+		}else{
+			var box = document.createElement('div'),
+	    	 text = document.createTextNode( boxMaker.lorem[i] );
+		   box.className = 'box col1 row1';
+		   box.appendChild( text );
+		   boxes.push( box );
+			
+   		var box = document.createElement('div'),
+   	      text = document.createTextNode( boxMaker.lorem[i] );
+	    box.className = 'box col2 row2';
+	    box.appendChild( text );
+	    boxes.push( box );
+	    	
+
+		}
+      }
+  	 flag1 = true
+  }	
+
+  }while ( flag3 == false || flag2 == false || flag1 == false)
+
+
+  return boxes;
+};
+
+</script>
+<p>
+  <button id="prepend">Prepend new items</button>
+  <button id="append">Append new items</button>
+</p>
+	<div id='' style="border: 1px red solid; width: 760px;height: 500px;position: relative;" >
+		<div id="container" class="" >
+		
+		</div>
+		<div style=""><a href="" >返回主页</a></div>
+	</div>
+
+<script>
+$(function(){   
+	var $container = $('#container');   
+	     $container.masonry({    
+		       itemSelector: '.box',    
+		       columnWidth: 10, 
+		       isAnimated: true 
+	    }); 
+		$('#prepend').click(function(){ 
+			     var $boxes = $( boxMaker.makeBoxes() ); 
+			          $container.html( $boxes ).masonry( 'reload' ); 
+		});
+	
+});
+
+seajs.use('/javascripts/router.js?t=201204091.js', function (router) { 
+		
+    	// router.load('da');   
+	 });        
+		
+
+	var data = 'page_id =2';
+	KISSY.io.getJSON('/ajax',data,function(o){
+		console.log(o)
+     });
+
+</script>
