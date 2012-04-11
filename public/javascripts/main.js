@@ -311,7 +311,7 @@ define(function(require, exports, module) {
 			 * 		 show(id)  特定容器里 显示消息  
 			 *		 showDialog() 简易对话					
 			 */
-			Msg = function() {
+		Msg = function() {
 				var self = this; 
 				if (!(self instanceof Msg)) { 
 					return new Msg(); 

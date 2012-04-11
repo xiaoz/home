@@ -38,18 +38,7 @@ transition-duration: 0.7s;
 <script>
 var boxMaker = {};
 
-boxMaker.lorem =['Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                 'Phasellus eu interdum odio',
-                 'Cras lobortis mauris vitae tellus consectetur sit amet cursus ipsum vestibulum',
-                 'Duis facilisis sodales tristique',
-                 ' Vivamus aliquet, est a rhoncus dapibus, velit tortor tempor turpis,', 
-                 'a pharetra diam lacus a metus. Donec gravida faucibus magna',
-                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'  , 
-                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'  , 
-                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'  , 
-                 'Suspendisse potenti. Sed bibendum nibh non velit blandit eu adipiscing ligula consectetur.'   
-                 
-                 ]
+boxMaker.lorem =[]
 boxMaker.loremLen = boxMaker.lorem.length;
   
 boxMaker.makeBoxes = function() {
@@ -66,7 +55,7 @@ boxMaker.makeBoxes = function() {
       if(flag3 == false){
 	    	for (var i=0; i < 2; i++ ) {
 	    		var box = document.createElement('div'),
-		        text = document.createTextNode( boxMaker.lorem[i] );
+		        text = document.createTextNode( boxMaker.lorem[i].user_name );
 		        if(i == 1){
 			        len = len-2;
 		        }
@@ -79,7 +68,7 @@ boxMaker.makeBoxes = function() {
   }else if(len == 2){
   	if(flag2 == false){
   		var box = document.createElement('div'),
-	     	 text = document.createTextNode( boxMaker.lorem[i] );
+	     	 text = document.createTextNode( boxMaker.lorem[i].user_name );
 	    box.className = 'box col'+len+' row'+len;
 	    box.appendChild( text );
 	    boxes.push( box );
@@ -87,7 +76,7 @@ boxMaker.makeBoxes = function() {
   		var type = Math.ceil( Math.random()*2);
 		if(type == 1){
 			var box = document.createElement('div'),
-  	     	 text = document.createTextNode( boxMaker.lorem[i] );
+  	     	 text = document.createTextNode( boxMaker.lorem[i].user_name );
 		    box.className = 'box col2 row2';
 		    box.appendChild( text );
 		    boxes.push( box );
@@ -95,7 +84,7 @@ boxMaker.makeBoxes = function() {
 		}else{
 			for (var i=0; i < 2; i++ ) {
 	    		var box = document.createElement('div'),
-	    	      text = document.createTextNode( boxMaker.lorem[i] );
+	    	      text = document.createTextNode( boxMaker.lorem[i].user_name );
 			    box.className = 'box col1 row1';
 			    box.appendChild( text );
 			    boxes.push( box );
@@ -106,7 +95,7 @@ boxMaker.makeBoxes = function() {
   }else if(len == 1){
   	if(flag1 == false){
   		var box = document.createElement('div'),
-    	 text = document.createTextNode( boxMaker.lorem[i] );
+    	 text = document.createTextNode( boxMaker.lorem[i].user_name );
 	   box.className = 'box col'+len+' row'+len;
 	   box.appendChild( text );
 	   boxes.push( box );
@@ -114,7 +103,7 @@ boxMaker.makeBoxes = function() {
 
 	   if(type == 1){
 			var box = document.createElement('div'),
- 	     	text = document.createTextNode( boxMaker.lorem[i] );
+ 	     	text = document.createTextNode( boxMaker.lorem[i].user_name );
 		    box.className = 'box col3 row3';
 		    box.appendChild( text );
 		    boxes.push( box );
@@ -122,20 +111,20 @@ boxMaker.makeBoxes = function() {
 		}else if(type == 2){
 			for (var i=0; i < 3; i++ ) {
 	    		var box = document.createElement('div'),
-	    	      text = document.createTextNode( boxMaker.lorem[i] );
+	    	      text = document.createTextNode( boxMaker.lorem[i].user_name );
 			    box.className = 'box col1 row1';
 			    box.appendChild( text );
 			    boxes.push( box );
 	    	}
 		}else{
 			var box = document.createElement('div'),
-	    	 text = document.createTextNode( boxMaker.lorem[i] );
+	    	 text = document.createTextNode( boxMaker.lorem[i].user_name );
 		   box.className = 'box col1 row1';
 		   box.appendChild( text );
 		   boxes.push( box );
 			
    		var box = document.createElement('div'),
-   	      text = document.createTextNode( boxMaker.lorem[i] );
+   	      text = document.createTextNode( boxMaker.lorem[i].user_name );
 	    box.className = 'box col2 row2';
 	    box.appendChild( text );
 	    boxes.push( box );
@@ -155,39 +144,108 @@ boxMaker.makeBoxes = function() {
 </script>
 <p>
   <button id="prepend">Prepend new items</button>
-  <button id="append">Append new items</button>
 </p>
+
+
+
 	<div id='' style="border: 1px red solid; width: 760px;height: 500px;position: relative;" >
+		
+		
+		
 		<div id="container" class="" >
 		
 		</div>
+		<div id="J_Paging"></div>
 		<div style=""><a href="" >返回主页</a></div>
 	</div>
 
 <script>
-$(function(){   
+	
 	var $container = $('#container');   
 	     $container.masonry({    
 		       itemSelector: '.box',    
 		       columnWidth: 10, 
 		       isAnimated: true 
-	    }); 
-		$('#prepend').click(function(){ 
-			     var $boxes = $( boxMaker.makeBoxes() ); 
-			          $container.html( $boxes ).masonry( 'reload' ); 
-		});
+	    }); 	
 	
-});
 
-seajs.use('/javascripts/router.js?t=201204091.js', function (router) { 
+	H.namespace("index");
+	H.add('index',function(H){
+		var S = KISSY,DOM = S.DOM, Event = S.Event;	
+	    H.index = {
+	    	paginator : null,
+	    	listItemsPaginator : null,
+	    	msg : null,
+	    	init : function() {
+	    	 	if(!H.index.msg){
+	         		H.index.msg = new H.util.Msg();
+	         	}
+		    	Event.on('#prepend','click',function(ev){
+					var submitHandle = function(o) {
+						H.index.msg.hide();
+			
+		        	    totalRecords = o.totalRecords[0].total;
+						
+						if(totalRecords > 0){
+							
+						} else {
+							
+						}
+						H.index.renderItems(o.collection);
+						var pageCount = Math.ceil(totalRecords/o.pageNum); 
+						
+						H.index.paginator = new H.widget.showPages('H.index.paginator').setRender(H.index.handlePagination).setPageCount(pageCount).printHtml('#J_Paging',2);
+			
+		        	};
+		        	var errorHandle = function(o){
+						
+			        }
+		        	H.index.msg.setMsg('正在获取宝贝，请稍候').show();
+		        	var data = '';
+					new H.widget.asyncRequest().setURI('/ajax').setMethod("GET").setHandle(submitHandle).setErrorHandle(errorHandle).setData(data).send(); 
+				})
+	        },
+	        renderItems :function(o){
+		        console.log(o)
+	        	boxMaker.lorem = o;
+	        	var $boxes = $( boxMaker.makeBoxes() ); 
+		       $container.html( $boxes ).masonry( 'reload' ); 
+
+		    },
+		    handlePagination :function(page_id){
+		    	var submitHandle = function(o) {
+					H.index.msg.hide();
 		
-    	// router.load('da');   
-	 });        
-		
+	        	    totalRecords = o.totalRecords[0].total;
+					
+					if(totalRecords > 0){
+						
+					} else {
+						
+					}
+					H.index.renderItems(o.collection);
+					var pageCount = Math.ceil(totalRecords/o.pageNum); 
+					H.index.paginator.setPage(page_id).setPageCount(pageCount).printHtml('#J_Paging',2);
+	        	};
+	        	var errorHandle = function(o){
+					
+		        }
+	        	H.index.msg.setMsg('正在获取宝贝，请稍候').show();
+	        	var data = 'page_id='+page_id+'&page_size=10';
+				new H.widget.asyncRequest().setURI('/ajax').setMethod("GET").setHandle(submitHandle).setErrorHandle(errorHandle).setData(data).send(); 
+			
 
-	var data = 'page_id =2';
-	KISSY.io.getJSON('/ajax',data,function(o){
-		console.log(o)
-     });
+			}
+		    
+	    }
+	      
+	    	
+	    	
+	})
 
+		KISSY.ready(function(){
+			var S = KISSY, DOM = S.DOM, Event = S.Event;
+			 H.index.init();
+			
+		})
 </script>
