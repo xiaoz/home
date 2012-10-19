@@ -11,11 +11,7 @@ exports.config = {
 	auth_cookie_name: 'node_club',
 	port: 10080,
 	version: '0.0.1',
-	db_host: 'r6472binghua7.mysql.aliyun.com',
-    db_port: 3306,
-    db_user: 'r8822binghua7',
-    db_password: 'ra82dee7e',
-    db_database: 'r8822binghua7'
+
 	// topics list count
 //	list_topic_count: 20,
 
