@@ -1,0 +1,83 @@
+   <style>
+</style>
+<section id="contact" class="nopager" data-sectionname="contact" style="background: url('/images/bg/23.jpg') 0px 0px repeat;">
+          <div class="wrapper clearfix" id="contact-content"  >
+                 		
+          		
+          
+        </div>		
+</section>
+<script type="text/template" id = "J_Temple">
+<div class="element {{country}} {{current}}" data="{{index}}" id="J_Elm_{{index}}">
+  <p class="number">{{country}}</p>
+  <div class="symbol">
+  		<img class="smallImg" style="width:50px;height:50px" src="{{smallImg}}" />
+  		<img class="largeImg" style="width:130px;height:130px;" src="{{largeImg}}" />
+  </div>
+<span class="detail">&nbsp;&nbsp;&nbsp;&nbsp;{{detail}}</span>
+<h2 class="name">{{name}}</h2>
+<p class="weight">{{englishName}}</p>
+<div class="element1 {{color}}">&nbsp;</div>
+</div>
+</script>
+<script>
+var getCarUrl = '/getCarAjax';	
+	
+KISSY.ready(function(S) {
+	    var  DOM = S.DOM, Event = S.Event;
+	     var $container = $('#contact-content');
+	      $container.isotope({
+	        itemSelector : '.element',
+	        masonry : {       
+		         columnWidth : 125
+			}
+	      });
+	      Event.delegate( document,'click','.element', function(ev){ 
+	    	  var data = DOM.attr(ev.currentTarget,'data');
+				if( typeof(data) != 'undefined' ){
+					var $contact = $('#contact-content');
+					 $contact.find('.large').removeClass('large');
+					 DOM.addClass(ev.currentTarget,'large');
+				     $container.isotope('reLayout'); 
+				}
+	      })
+	      var SubmitHandle = function(o) {
+               msg.hide();
+				var o = o.data;
+				var str = '';
+				KISSY.use('template',function(){
+					var temp= KISSY.Template(DOM.html(DOM.get('#J_Temple')));
+					var rnum = parseInt(Math.random()*3+1);
+					KISSY.each(o.car,function(data,index){
+						data.index = index;
+						if(index == rnum){
+							data.current = 'large';
+						}else{
+							data.current = '';
+						}
+						str +=temp.render(data);
+					 })
+					  	 str +=  '<div class="element corner-stamp2" ><a href="/all2" title=""  class="afterfout">&nbsp;</a></div>'; 
+				 str +=  '<div class="element corner-stamp3 col10 " ><div class="name1"><a href="/britain2" title="英国"  class="afterfout"> <span class="contry1">&nbsp;</span><span class="brands1">英国</span><span class="brands2">BRITAIN</span></a></div><div class="name2"><span class="contry2">&nbsp;</span><a href="/italy" title="意大利"  class="afterfout"><span class="brands1">意大利</span><span class="brands2">ITALY</span></a></div> <div class="name3"><span class="contry3">&nbsp;</span><a href="/usa" title="美国"  class="afterfout"><span class="brands1">美国</span><span class="brands2">USA</span></a></div></div>'; 
+				 str +=  '<div class="element corner-stamp3 col10" ><div class="name1"><a href="/china2" title="中国"  class="afterfout"><span class="contry4">&nbsp;</span><span class="brands1">中国</span><span class="brands2">CHINA</span></a></div><div class="name2"><a href="/germany" title="德国"  class="afterfout"><span class="contry5">&nbsp;</span><span class="brands1">德国</span><span class="brands2">Germany</span></a></div> <div class="name3"><span class="contry6">&nbsp;</span><a href="/france" title="法国"  class="afterfout"><span class="brands1">法国</span><span class="brands2">France</span></a></div></div>'; 
+				 str +=  '<div class="element corner-stamp3 col10" ><div class="name1"><a href="/japan2" title="日本"  class="afterfout"><span class="contry7">&nbsp;</span><span class="brands1">日本</span><span class="brands2">JAPAN</span></a></div><div class="name2"><a href="/Korea" title="韩国"  class="afterfout"><span class="contry8">&nbsp;</span><span class="brands1">韩国</span><span class="brands2">KOREA</span></a></div> <div class="name3 active"><a href="/other" title="其他"  class="afterfout"><span class="brands1">其他</span><span class="brands2">OTHER</span></a></div></div>'; 
+					 var $newEls = $(str)
+					 var $container = $('#contact-content');
+					 $container.prepend( $newEls ).isotope('reloadItems').isotope({ sortBy: 'original-order' }); 
+				})
+				 
+	 	    };
+	 	    var ErrorHandle = function(o){
+                  msg.hide();
+				alert('服务器出错！！请稍后再试')
+		 	};
+              var msg = null;
+           if(!msg){
+              msg = new H.util.Msg();
+    	    }
+             msg.setMsg('正在加载中，请稍候。。。').show();
+	 	    var data = "car_id=1&contry=other";
+	 	    new H.widget.asyncRequest().setURI(getCarUrl).setMethod("GET").setHandle(SubmitHandle).setErrorHandle(ErrorHandle).setData(data).setDataType('json').send();
+	 	   
+});	
+</script>

@@ -3,30 +3,26 @@
  */
 
 exports.config = {
-	name: 'Node Club',
-	description: 'test',
+	name: 'car Club',
+	description: '养生粥',
 	host: 'http://127.0.0.1/',
-//	db: 'mongodb://127.0.0.1/node_club',
-	session_secret: 'node_club',
-	auth_cookie_name: 'node_club',
-	port: 10080,
+	session_secret: 'car_club',
+	auth_cookie_name: 'car_club',
+	app_port: 10080,
 	version: '0.0.1',
-
-	// topics list count
-//	list_topic_count: 20,
-
-	// mail SMTP
-//	mail_port: 25,
-//	mail_user: 'club',
-//	mail_pass: 'club',
-//	mail_host: 'smtp.126.com',
-//	mail_sender: 'club@126.com',
-//	mail_use_authentication: true,
 	
-	//weibo app key
-//	weibo_key: 10000000,
+	//logfiles directory
+	logDirectory : __dirname + "/logs/",
 
-	// admins
+	// mysql config
+	server : "r2602binghua7.mysql.aliyun.com",
+	port : 3306,
+	user : "r8549binghua7",
+	password : "r6081760d",
+	database : "r8549binghua7",
+	maxSockets : 80,//pool使用
+	timeout : 1,//pool使用
+	
 //	admins: {admin:true}
 };
 

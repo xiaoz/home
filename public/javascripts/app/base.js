@@ -1,6 +1,5 @@
 // JavaScript Document
 /*Function.prototype.bind=function(context){var argv=[arguments[0],this];var argc=arguments.length;for(var ii=1;ii<argc;ii++){argv.push(arguments[ii])}return bind.apply(null,argv)};
-
 Function.prototype.shield=function(context){
 	if(typeof this!='function'){
 		throw new TypeException();
@@ -16,7 +15,6 @@ Function.prototype.defer=function(msec,clear_on_quickling_event){
 	msec=msec||0;
 	return setTimeout(this,msec,clear_on_quickling_event);
 };
-
 Number.prototype.toFixed=function(num){with(Math)return round(this.valueOf()*pow(10,num))/pow(10,num)};
 */
 if (!Array.prototype.indexOf) {
@@ -45,7 +43,6 @@ Array.prototype.inArray = function (value) {
     }  
     return false;  
 };
-
 function setLocation(url) {
 	window.location.href = url;
 	try {
@@ -54,18 +51,15 @@ function setLocation(url) {
 		//
 	}
 }
-
 function confirmSetLocation(message, url){
     if( confirm(message) ) {
         setLocation(url);
     }
     return false;
 }
-
 function deleteConfirm(message, url) {
     confirmSetLocation(message, url);
 }
-
 function bind(obj, method) {
     var args = [];
     for (var ii = 2; ii < arguments.length; ii++) {
@@ -95,12 +89,10 @@ function bind(obj, method) {
     };
     return fn;
 };
-
 bind._toString = bind._toString || 
 function(obj, args, method) {
     return (typeof method == 'string') ? ('late bind<' + method + '>') : ('bound<' + method.toString() + '>');
 };
-
 function to_array(obj) {
     var ret = [];
     for (var i = 0, l = obj.length; i < l; ++i) {
@@ -108,7 +100,6 @@ function to_array(obj) {
     }
     return ret;
 };
-
 Function.prototype.bind = function(context) {
     var argv = [arguments[0], this];
     var argc = arguments.length;
@@ -152,24 +143,21 @@ Date.prototype.format = function(format)
         ("00"+ o[k]).substr((""+ o[k]).length));
         return format;
     }
-
 KISSY.app('H', function() {
 	var S = KISSY, DOM = S.DOM,
         debug = (-1 === window.location.toString().indexOf('__debug')) ? false : true;
-
     return {
-
         /**
-         * °æ±¾ºÅ
+         * ï¿½æ±¾ï¿½ï¿½
          */
 		version: '1.0',
 		
 		/*
-		 * ´æ·Å¹«ÓÃ·½·¨µÈ
+		 * ï¿½ï¿½ï¿½Å¹ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
 		 * */
 		util: {
 			/*
-			 * Ò³ÃæË¢ÐÂ
+			 * Ò³ï¿½ï¿½Ë¢ï¿½ï¿½
 			 * */
 			pageReload: function( url ) {
 				url = ( url || window.location.toString() ).replace(/t=(\d)+/g, '').replace(/([&|?])+$/, '');
@@ -177,14 +165,13 @@ KISSY.app('H', function() {
 				return window.location = url;
 			},
 			/*
-			 * ½âÎödata.responseText, s === data.responseText
+			 * ï¿½ï¿½ï¿½ï¿½data.responseText, s === data.responseText
 			 * @return {Object}
 			 * */
 			parseJSON: function( s ) {
 				try {
 					var result = new Function('return' + s.replace(/[\n|\t|\r]/g, ''))();
 				} catch(e) { HLG.log( 'parse JSON error' ); }
-
 				return result;
 			},
 			serialize: function( form ) {
@@ -203,7 +190,7 @@ KISSY.app('H', function() {
                	
 			},
             /**
-             * ÇÐ»»Ð¡¾Õ»¨ (¼Ù¶¨Ð¡¾Õ»¨ÔÚelµÄÇ°Ãæ)
+             * ï¿½Ð»ï¿½Ð¡ï¿½Õ»ï¿½ (ï¿½Ù¶ï¿½Ð¡ï¿½Õ»ï¿½ï¿½ï¿½elï¿½ï¿½Ç°ï¿½ï¿½)
              * @param el
              */
             toggleFlower: function(el) {
@@ -217,15 +204,14 @@ KISSY.app('H', function() {
 				})
 			}
 		},
-
 		/*
-		 * ×é¼þ,
+		 * ï¿½ï¿½ï¿½ï¿½,
 		 */
 		widget: {},
 		
         app:{}, 
         
-        //·ÛË¿»á
+        //ï¿½ï¿½Ë¿ï¿½ï¿½
         FSH: {},
 		/**
          * PrinHLG debug info.
@@ -248,32 +234,27 @@ KISSY.app('H', function() {
 		}
     };
 });
-
-
-
- /* HLG.Dialog ¼òÒ×Ä£Äâ´°¿Ú
+ /* HLG.Dialog ï¿½ï¿½ï¿½ï¿½Ä£ï¿½â´°ï¿½ï¿½
  * 
  * @creator     hlg<xiaohu@taobao.com>
  * @date		2011.05.21
  * @version		1.0
  */
-
 H.add('widget~Dialog', function( HLG ) {
 	var S = KISSY, DOM = S.DOM, Event = S.Event, doc = document, IE = S.UA.ie,
 		DP = Dialog.prototype, _id_counter = 0,
-/* Ä¬ÈÏHTML
-
+/* Ä¬ï¿½ï¿½HTML
 <div class="ui-dialog ui-dialog-dd">
 	<div class="ui-dialog-hd">hd</div>
 	<div class="ui-dialog-bd">bd</div>
-	<div class="ui-dialog-ft"><a class="close" href="#close" title="¹Ø±Õ"></a></div>
+	<div class="ui-dialog-ft"><a class="close" href="#close" title="ï¿½Ø±ï¿½"></a></div>
 </div>
 <div class="ui-dialog-mask"></div>
 */	
 		defConfig = {
 			ID: null,
 			head: 'Title',
-			body: '<div class="ui-dialog-loading">ÕýÔÚ¼ÓÔØ£¬ÇëÉÔºò...</div>',
+			body: '<div class="ui-dialog-loading">ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½Ôºï¿½...</div>',
 			foot: '<a href="javascript:;" class="close">close</a>',
 			center: true,
 			width: '580px',
@@ -290,17 +271,16 @@ H.add('widget~Dialog', function( HLG ) {
 			scroll : true
 		},
 		/**
-		 * ËùÓÐ×Ô¶¨ÒåÊÂ¼þÁÐ±í
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ð±ï¿½
 		 */
-		CHANGE_HEADER = "changeHeader",	//ÐÞ¸Ähd
-		CHANGE_BODY = "changeBody",		//ÐÞ¸Äbg
-		CHANGE_FOOTER = "changeFooter",	//ÐÞ¸Äft
-		CENTER = "center",					//centerºó
+		CHANGE_HEADER = "changeHeader",	//ï¿½Þ¸ï¿½hd
+		CHANGE_BODY = "changeBody",		//ï¿½Þ¸ï¿½bg
+		CHANGE_FOOTER = "changeFooter",	//ï¿½Þ¸ï¿½ft
+		CENTER = "center",					//centerï¿½ï¿½
 		BEFORE_SHOW = "beforeShow",		//showÖ®Ç°
 		SHOW = "show",						//show
 		BEFORE_HIDE = "beforeHide",		//hideÖ®Ç°
 		HIDE = "hide";						//hide
-
 		
 	function Dialog (config) {
 		
@@ -316,21 +296,18 @@ H.add('widget~Dialog', function( HLG ) {
 				self.hide();
 			}
 		});
-
 	}
 	//
 	S.mix(DP, S.EventTarget);
-
 	S.mix(DP, {
 		
 		/*
-		 * ÄÚ²¿×´Ì¬Âë 400Îªhide, 200Îªshow
+		 * ï¿½Ú²ï¿½×´Ì¬ï¿½ï¿½ 400Îªhide, 200Îªshow
 		 *
 		 * */
 		_status: 400,
-
 		/**
-		 * ¾ÓÖÐ return this
+		 * ï¿½ï¿½ï¿½ï¿½ return this
 		 */
 		center: function() { 
 			var self = this, elem = this.elem, x, y,
@@ -344,7 +321,6 @@ H.add('widget~Dialog', function( HLG ) {
             } else {
                 x = DOM.scrollLeft();
             }
-
             if (elemHeight < viewPortHeight) {
                 y = (viewPortHeight / 2) - (elemHeight / 2) + DOM.scrollTop();
             } else {
@@ -372,7 +348,7 @@ H.add('widget~Dialog', function( HLG ) {
 		 */
 		setBody: function(str) {
             var self = this;
-            if(str.nodeType) { // Èç¹ûÊÇ½ÚµãÔªËØ, Çå¿ÕelemBody, ÔÙ²åÈë½ÚµãÔªËØ
+            if(str.nodeType) { // ï¿½ï¿½ï¿½ï¿½ï¿½Ç½Úµï¿½Ôªï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½elemBody, ï¿½Ù²ï¿½ï¿½ï¿½ï¿½Úµï¿½Ôªï¿½ï¿½
 				self.elemBody.innerHTML = '';
 				self.elemBody.appendChild(str);
 			} else {
@@ -393,7 +369,6 @@ H.add('widget~Dialog', function( HLG ) {
 			self.fire( CHANGE_FOOTER );
 			return self;
         },
-
 		/**
 		 * show
 		 */
@@ -462,8 +437,7 @@ H.add('widget~Dialog', function( HLG ) {
 			self.elemBody = doc.createElement('bd');
             self.elemBody.className = cfg.classNameBd;
             self.setBody( cfg.body );
-
-			// ×¢²á¹Ø±Õ°´Å¥
+			// ×¢ï¿½ï¿½ï¿½Ø±Õ°ï¿½Å¥
 			if(true === cfg.close) {
                 //ft
                 self.elemFoot = doc.createElement('ft');
@@ -481,7 +455,7 @@ H.add('widget~Dialog', function( HLG ) {
             self.elem.appendChild(self.elemFoot);
 			doc.body.appendChild(self.elem);
 			
-			// ³õÊ¼»¯ÕÚÕÖ²ã
+			// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½
 			if(true === cfg.mask) {
 				self.mask = doc.createElement('mask');
 				self.mask.id = self.elem.id + '_' + cfg.maskClassName;
@@ -492,7 +466,7 @@ H.add('widget~Dialog', function( HLG ) {
 				doc.body.appendChild(self.mask);
 			}
 			
-			// ³õÊ¼»¯ÍÏ×§
+			// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½×§
 			if(true === cfg.drag) {
 				
 				DOM.addClass(self.elem, 'ui-dialog-dd');
@@ -510,14 +484,13 @@ H.add('widget~Dialog', function( HLG ) {
 			   }
 		}
 	});
-
    H.widget.Dialog = Dialog;
     
    H.widget.DialogMgr = {
-        /* ´æ´¢ÒÑ³õÊ¼»¯µÄdialog */
+        /* ï¿½æ´¢ï¿½Ñ³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½dialog */
         list: {},
         /**
-            * ·µ»ØH.widget.Dialog¶ÔÏó
+            * ï¿½ï¿½ï¿½ï¿½H.widget.Dialogï¿½ï¿½ï¿½ï¿½
             */
         get: function(id, config) {
             if(!id || !this.list[id]) {
@@ -531,14 +504,14 @@ H.add('widget~Dialog', function( HLG ) {
 });
 /* vim: set et sw=4H=4 sHLG=4 fdm=indent ff=unix fenc=gbk: */
 /**
- *H.Msg ¼òÒ×ÏûÏ¢ÌáÊ¾
+ *H.Msg ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾
  *
  *   new msg = H.util.Msg();  
- * ·½·¨£ºsetHeader(str);  ÉèÖÃÍ·²¿
- 		 setMsg(value); ÉèÖÃÏûÏ¢ 
-         show(): ¾ÓÖÐÏÔÊ¾ÕÚÕÖ£¬ 
- * 		 show(id)  ÌØ¶¨ÈÝÆ÷Àï ÏÔÊ¾ÏûÏ¢  
- *		 showDialog() ¼òÒ×¶Ô»°
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½setHeader(str);  ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½
+ 		 setMsg(value); ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ 
+         show(): ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ö£ï¿½ 
+ * 		 show(id)  ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢  
+ *		 showDialog() ï¿½ï¿½ï¿½×¶Ô»ï¿½
  * 
  * 					
  */
@@ -555,17 +528,16 @@ H.add('widget~Dialog', function( HLG ) {
         this.elem = null;
         this.panel =null;
         this.msg = null;
-        this.header = "´íÎóÌáÊ¾";
+        this.header = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾";
         this.message = null;
 	}
-
 	S.mix(Msg.prototype, {
 		
 		/*
 		 * 
-		 * ÉèÖÃÏûÏ¢
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		 *
-		 * @param value {String} ÏûÏ¢ÄÚÈÝ
+		 * @param value {String} ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
          * show(mode) 
 		 *			   
 		 * */
@@ -604,7 +576,7 @@ H.add('widget~Dialog', function( HLG ) {
         },
         
         createDiv: function(){
-	        	var parent = DOM.create('<div class="messages-prompt"><div class="fbloader"><img  src=" http://img.huanleguang.com/hlg//fbloader.gif" width="16" height="11" /></div></div>');
+	        	var parent = DOM.create('<div class="messages-prompt"><div class="fbloader"><img  src="/images/loading.gif" width="136" height="11" /></div></div>');
 	        	this.elem = doc.createElement('div'); 
 	        	DOM.append(this.elem,parent);
 				doc.body.appendChild(parent);
@@ -614,7 +586,7 @@ H.add('widget~Dialog', function( HLG ) {
         	var Id = 'msg_panel'+num++;
 			this.panel = H.widget.DialogMgr.get(Id,{
 				 ID: Id,
-				 head: '´íÎóÌáÊ¾',
+				 head: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾',
 				 body: '',
 				 foot: '<a href="javascript:;" class="close">close</a>',
 				 center: true,
@@ -626,7 +598,7 @@ H.add('widget~Dialog', function( HLG ) {
         },
         
         /**
-		 * ¾ÓÖÐ 
+		 * ï¿½ï¿½ï¿½ï¿½ 
 		 */
 		center: function() { 
 			var self = this, x, y;
@@ -640,7 +612,6 @@ H.add('widget~Dialog', function( HLG ) {
             } else {
                 x = DOM.scrollLeft();
             }
-
             if (elemHeight < viewPortHeight) {
                 y = (viewPortHeight / 2) - (elemHeight / 2) + DOM.scrollTop();
             } else {
@@ -676,8 +647,8 @@ H.add('widget~Dialog', function( HLG ) {
             //DOM.css( self.elem, 'opacity', 1);
 			//return type + '' - 0 === 0 ? DOM.addClass( elem, 'error' ) : '';
 		},
-		/*Ò»°ã´íÎóÏûÏ¢ÌáÊ¾ body ÑùÊ½
-		 * <div class="point relative"><div class="point-w-1">ÍÅ¹º³õÊ¼²ÎÍÅÈËÊý±ØÐë´óÓÚµÈÓÚ0</div></div>
+		/*Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê¾ body ï¿½ï¿½Ê½
+		 * <div class="point relative"><div class="point-w-1">ï¿½Å¹ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½0</div></div>
 		 * */
 		showDialog: function(){
 			var self = this;
@@ -690,7 +661,7 @@ H.add('widget~Dialog', function( HLG ) {
 			
 		},
 		
-	   // ³õÊ¼»¯ÕÚÕÖ²ã
+	   // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½
 		mask: function() {
 			var self = this;
 				mask = doc.createElement('mask');
@@ -711,15 +682,15 @@ H.add('widget~Dialog', function( HLG ) {
 			return this;
 		},
 		/*
-		 * Òþ²Ø
+		 * ï¿½ï¿½ï¿½ï¿½
 		 *
-		 * @param b {Boolean} ÊÇ·ñÑÓÊ±Òþ²Ø, Ä¬ÈÏfalse
+		 * @param b {Boolean} ï¿½Ç·ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½, Ä¬ï¿½ï¿½false
 		 * */
 		hide: function( b ) {
 			var self = this;
 			if(self.elem){
 	            if ( true === b ) {
-	                // ÒÑÑÓ³ÙÁË, ÖØÐÂ¿ªÊ¼
+	                // ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Â¿ï¿½Ê¼
 	                if ( self.timer ) {
 	                    self.timer.cancel();
 	                }
@@ -744,15 +715,12 @@ H.add('widget~Dialog', function( HLG ) {
 			}
 		}
 	});
-
 	 H.util.Msg = Msg;
 });
-
 H.add('widget~asyncRequest', function(HLG) {
 	var S = KISSY, DOM = S.DOM, Event = S.Event, doc = document;
 	
 	function asyncRequest(uri) {
-
     	var self = this; 
         if (!(self instanceof asyncRequest)) { 
             return new asyncRequest(uri); 
@@ -775,7 +743,6 @@ H.add('widget~asyncRequest', function(HLG) {
 		handleSuccess: function() {
 			return undefined;
 		},
-
         handleFailure: function(o) {
            alert(o.desc);
         },
@@ -848,14 +815,13 @@ H.add('widget~asyncRequest', function(HLG) {
             return this;
         },
         dispatchResponse: function(o,b) {
-
         	b.handleSuccess(o);
             var onload = o.onload;
             if (onload) {
                 try { (new Function(onload))();
               
 			    } catch(exception) {
-                   // HLG.widget.msgBox.setMsg('Ö´ÐÐ·µ»ØÊý¾ÝÖÐµÄ½Å±¾³ö´í').setAutohide().show()
+                   // HLG.widget.msgBox.setMsg('Ö´ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ½Å±ï¿½ï¿½ï¿½ï¿½ï¿½').setAutohide().show()
                 }
             }
         },
@@ -869,7 +835,7 @@ H.add('widget~asyncRequest', function(HLG) {
         },
         
         dispatchErrorResponse: function(o) {
-        	new H.util.Msg().setMsg('Óë·þÎñÆ÷½»»¥³ö´í£¬Çë¼ì²éÍøÂçÊÇ·ñÁ¬½ÓÕý³£').show();
+        	new H.util.Msg().setMsg('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½').show();
         	S.later(function(){window.history.back(-1);},10000,false,null,null);
         	//S.later(function(){window.history.back(-1);},3000,false,null,null);
         },
@@ -926,31 +892,29 @@ H.add('widget~asyncRequest', function(HLG) {
 	});
 	H.widget.asyncRequest = asyncRequest;
 });
-
-  //·ÖÒ³ ×é¼þ
+  //ï¿½ï¿½Ò³ ï¿½ï¿½ï¿½ï¿½
 H.add('widget~showPages', function( HLG ) { 
   
 	var S = KISSY, DOM = S.DOM, Event = S.Event, doc = document;
   
-	function showPages(name) { //³õÊ¼»¯ÊôÐÔ 
+	function showPages(name) { //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		var self = this; 
         if (!(self instanceof showPages)) { 
         	return new showPages(name); 
         } 	
 		this.pageNum = 4 ;   
-		this.name = name;      //¶ÔÏóÃû³Æ
-        this.page = 1;         //µ±Ç°Ò³Êý
-        this.pageCount = 200;    //×ÜÒ³Êý
-        this.argName = 'page'; //²ÎÊýÃû	
+		this.name = name;      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        this.page = 1;         //ï¿½ï¿½Ç°Ò³ï¿½ï¿½
+        this.pageCount = 200;    //ï¿½ï¿½Ò³ï¿½ï¿½
+        this.argName = 'page'; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
 		
   	}
-
 	S.mix(showPages.prototype,{
 		jump: function() {
 	        return undefined;
 	  	},
 		
-	    //½øÐÐµ±Ç°Ò³ÊýºÍ×ÜÒ³ÊýµÄÑéÖ¤
+	    //ï¿½ï¿½ï¿½Ðµï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
         checkPages: function() { 
 	     	if (isNaN(parseInt(this.page))) this.page = 1;
 		 	if (isNaN(parseInt(this.pageCount))) this.pageCount = 1;
@@ -961,7 +925,7 @@ H.add('widget~showPages', function( HLG ) {
 		 	this.pageCount = parseInt(this.pageCount);
      	},
 		
-		//Éú³Éhtml´úÂë	  
+		//ï¿½ï¿½ï¿½ï¿½htmlï¿½ï¿½ï¿½ï¿½	  
      	_createHtml: function(mode) { 
 	   
          	var self = this, strHtml = '', prevPage = this.page - 1, nextPage = this.page + 1;   
@@ -969,7 +933,7 @@ H.add('widget~showPages', function( HLG ) {
 		
             switch (mode) {
 				case 1: 
-					//Ä£Ê½1 (Ò³Êý)
+					//Ä£Ê½1 (Ò³ï¿½ï¿½)
                     /* strHtml += '<span class="count">Pages: ' + this.page + ' / ' + this.pageCount + '</span>';*/
                     strHtml += '<span class="number">';
                     if (this.page != 1) {
@@ -1004,14 +968,14 @@ H.add('widget~showPages', function( HLG ) {
                     break;
 								 
 				case 2: 
-					//Ä£Ê½2 (Ç°ºóËõÂÔ,Ò³Êý,Ê×Ò³,Ç°Ò³,ºóÒ³,Î²Ò³)
+					//Ä£Ê½2 (Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ò³ï¿½ï¿½,ï¿½ï¿½Ò³,Ç°Ò³,ï¿½ï¿½Ò³,Î²Ò³)
 					
 					if(this.pageCount > 1){
 	                    strHtml += '<div class="page-bottom"> <div class="sabrosus">';
 	                    if (prevPage < 1) {
 	                        strHtml += '<span class="pre-none page-pic-no"></span>';
 	                    } else {
-	                        strHtml += '<a class="" href="javascript:' + self.name + '.toPage(' + prevPage + ');" title="ÉÏÒ»Ò³"><span class="pre page-pic-no"></span></a>';
+	                        strHtml += '<a class="" href="javascript:' + self.name + '.toPage(' + prevPage + ');" title="ï¿½ï¿½Ò»Ò³"><span class="pre page-pic-no"></span></a>';
 	                      }
 	                    if (this.page != 1) {
 							//strHtml += ' <a class="a-padding" href="javascript:' + self.name  + '.toPage(1);">1</a>';
@@ -1058,11 +1022,11 @@ H.add('widget~showPages', function( HLG ) {
 						if (nextPage > this.pageCount) {
 	                    	strHtml += '<span class="next-none page-pic-no"></span>';
 	                    } else {
-	                        strHtml += '<a class="" href="javascript:' + self.name + '.toPage(' + nextPage + ');" title="ÏÂÒ»Ò³"><span class="next page-pic-no"></span></a>';
+	                        strHtml += '<a class="" href="javascript:' + self.name + '.toPage(' + nextPage + ');" title="ï¿½ï¿½Ò»Ò³"><span class="next page-pic-no"></span></a>';
 	                      }
 						 if (this.pageCount > 5) {
 			   					strHtml += '<font class="number">';
-			   					strHtml += '¹²'+this.pageCount+'Ò³&nbsp;µ½µÚ&nbsp;';
+			   					strHtml += 'ï¿½ï¿½'+this.pageCount+'Ò³&nbsp;ï¿½ï¿½ï¿½ï¿½&nbsp;';
 			   					if(this.page>=this.pageCount){
 			   						strHtml += '<input style="" type="text" class="page-pic-no w-30 bg-img" id="pageInput' + self.name + '"  value="' + this.pageCount + '" onkeypress="return ' + self.name + '.formatInputPage(event);" onfocus="this.select()">&nbsp;Ò³';
 			   					}else{
@@ -1079,12 +1043,12 @@ H.add('widget~showPages', function( HLG ) {
                    if (prevPage < 1) {
                        strHtml += ' <span class="pre-none page-pic-no"></span>';
                    } else {
-                       strHtml += '<a class="border-left-dedede" href="javascript:' + self.name + '.toPage(' + prevPage + ');" title="ÉÏÒ»Ò³"><span class="pre page-pic-no"></span></a>';
+                       strHtml += '<a class="border-left-dedede" href="javascript:' + self.name + '.toPage(' + prevPage + ');" title="ï¿½ï¿½Ò»Ò³"><span class="pre page-pic-no"></span></a>';
                      }
                    if (nextPage > this.pageCount) {
                    	strHtml += '<span class="next-none page-pic-no"></span>';
                    } else {
-                       strHtml += '<a href="javascript:' + self.name + '.toPage(' + nextPage + ');" title="ÏÂÒ»Ò³"><span class="next page-pic-no"></span></a>';
+                       strHtml += '<a href="javascript:' + self.name + '.toPage(' + nextPage + ');" title="ï¿½ï¿½Ò»Ò³"><span class="next page-pic-no"></span></a>';
                      }
                   strHtml += '<div style="clear:both"></div></div></div>';
                   break;
@@ -1093,7 +1057,7 @@ H.add('widget~showPages', function( HLG ) {
 		    return strHtml;
 			   
 		},
-		 //ÏÞ¶¨ÊäÈëÒ³Êý¸ñÊ½
+		 //ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê½
 		formatInputPage : function(e){
 			var ie = navigator.appName=="Microsoft Internet Explorer"?true:false;
 			if(!ie) var key = e.which;
@@ -1102,7 +1066,7 @@ H.add('widget~showPages', function( HLG ) {
 			return false;
 		},
       
-	    //Ò³ÃæÌø×ª ·µ»Ø½«Ìø×ªµÄÒ³Êý
+	    //Ò³ï¿½ï¿½ï¿½ï¿½×ª ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ò³ï¿½ï¿½
 		toPage: function( page ,flag) { 
         	var turnTo = 1;
 			var self = this;    
@@ -1116,14 +1080,14 @@ H.add('widget~showPages', function( HLG ) {
 			  
 		},
 			  
-        //ÏÔÊ¾html´úÂë
+        //ï¿½ï¿½Ê¾htmlï¿½ï¿½ï¿½ï¿½
 	    printHtml: function(contian, mode) {  
 			this.checkPages();
             DOM.html(contian,this._createHtml(mode));
 			return this;
 		},
 				   
-	    //ÉèÖÃ×ÜÒ³Êý			  
+	    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½			  
 	    setPageCount: function( pagecount ) {
 			this.pageCount=pagecount;
 	 	    return this;
@@ -1133,7 +1097,7 @@ H.add('widget~showPages', function( HLG ) {
             return this.pageCount;
 	    },
 	    
-		//ÉèÖÃÌø×ª Ö´ÐÐº¯Êý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª Ö´ï¿½Ðºï¿½ï¿½ï¿½
         setRender: function(fn) {
 			this.jump = fn;
 			return this;
@@ -1146,19 +1110,15 @@ H.add('widget~showPages', function( HLG ) {
 		    this.page = page;  
 		    return this; 
 	    }   	   
-
 		  	   
 	});
-
 	H.widget.showPages = showPages;
 });
-
- //Ñ­»·µ¹¼ÆÊ±
+ //Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
 H.add('widget~countdown', function( HLG ) { 
   
 	var S = KISSY, DOM = S.DOM, Event = S.Event, doc = document;
-
-	function countdown(contain, endTime, mode) { //³õÊ¼»¯ÊôÐÔ 
+	function countdown(contain, endTime, mode) { //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		var self = this; 
         if (!(self instanceof countdown)) { 
         	return new countdown(contain, endTime, mode); 
@@ -1169,19 +1129,19 @@ H.add('widget~countdown', function( HLG ) {
 	
 	S.mix(countdown.prototype,{
 		init: function(contain, endTime, mode) {
- 	    	//var n = endTime || 1440; //Ê£Óà·ÖÖÓÊý
+ 	    	//var n = endTime || 1440; //Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  	    		var self = this;
 			if (mode == '' || typeof(mode) == 'undefined') mode = 1;
 			if(mode == 1){
-				// Ìì Ê± ·Ö Ãë·Ö 
-				DOM.html(DOM.get(contain),' <span class="day"></span>Ìì<span class="hour"></span>Ê±<span class="min"></span>·Ö<span class="sec"></span>Ãë ');
+				// ï¿½ï¿½ Ê± ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+				DOM.html(DOM.get(contain),' <span class="day"></span>ï¿½ï¿½<span class="hour"></span>Ê±<span class="min"></span>ï¿½ï¿½<span class="sec"></span>ï¿½ï¿½ ');
 			} 
 			if(mode == 2){
-				//  Ê± ·Ö Ãë·Ö 
-				DOM.html(DOM.get(contain),' <span class="hour">19</span>Ê±<span class="min">19</span>·Ö<span class="sec">26</span>Ãë');
+				//  Ê± ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+				DOM.html(DOM.get(contain),' <span class="hour">19</span>Ê±<span class="min">19</span>ï¿½ï¿½<span class="sec">26</span>ï¿½ï¿½');
 			} 
 			if(mode == 3){
-				//  Ê± ·Ö Ãë·Ö 
+				//  Ê± ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 				DOM.html(DOM.get(contain),'<span class="hour"><b>0</b><b>0</b></span><span class="min"><b>0</b><b>0</b></span><span class="sec"><b>0</b><b>0</b></span>');
 			} 
 					   
@@ -1236,7 +1196,7 @@ H.add('widget~countdown', function( HLG ) {
 			}
             self.timer = S.later(fresh, 1000 /*1s*/, true/*setInterval*/, null/*context*/, endTime);
 		},
-		//ÉèÖÃ½áÊøÊ± Ö´ÐÐº¯Êý
+		//ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½Ê± Ö´ï¿½Ðºï¿½ï¿½ï¿½
         setRender: function(fn) {
 			var self = this;
 			this.endDo = fn;
@@ -1249,15 +1209,12 @@ H.add('widget~countdown', function( HLG ) {
 	
 				  	   
 	});
-
 	H.widget.countdown = countdown;
 });
-
-
-//ÉÏÏÂ×óÓÒÎÞ·ì¹ö¶¯
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½
 H.add('widget~roll', function( HLG ) { 
   
-	/*½á¹¹
+	/*ï¿½á¹¹
 	<div id="demo">
 		<div id="demo1">
  			<div></div>
@@ -1270,7 +1227,7 @@ H.add('widget~roll', function( HLG ) {
 		
 	var LEFT = "left", RIGHT = "right", UP = "up", DOWN = "down";
 	
-	function roll(contain, mode,speed) { //³õÊ¼»¯ÊôÐÔ 
+	function roll(contain, mode,speed) { //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		var self = this;
 		if (!(self instanceof roll)) { 
         	return new roll(contain, mode, speed); 
@@ -1316,8 +1273,8 @@ H.add('widget~roll', function( HLG ) {
 					DOM.html(self.tab2,DOM.html(self.tab1));
 					self.tab.scrollTop=self.tab.scrollHeight;
 					function MarqueeDown(){
-						if(self.tab1.offsetTop-self.tab.scrollTop>=0)//µ±¹ö¶¯ÖÁdemo1Óëdemo2½»½çÊ±
-							self.tab.scrollTop+=self.tab2.offsetHeight;//demoÌøµ½×î¶¥¶Ë
+						if(self.tab1.offsetTop-self.tab.scrollTop>=0)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½demo1ï¿½ï¿½demo2ï¿½ï¿½ï¿½ï¿½Ê±
+							self.tab.scrollTop+=self.tab2.offsetHeight;//demoï¿½ï¿½ï¿½ï¿½ï¿½î¶¥ï¿½ï¿½
 						else{
 							self.tab.scrollTop--;
 						}
@@ -1342,7 +1299,5 @@ H.add('widget~roll', function( HLG ) {
 			}
 		}
 	});
-
 	H.widget.roll = roll;
 });
-

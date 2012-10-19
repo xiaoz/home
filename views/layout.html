@@ -5,59 +5,58 @@
 		<meta name='author' content='xiaoz'>
 		<meta name='description' content='<%= config.description %>'>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		
 		<!-- style -->
-		<link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.css" media="screen" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" media="screen" />
+		<link href="/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+		<link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
+	
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main-<%= locals.active%>.css" media="screen" />
+		
+		<% if(locals.active == 7 || locals.active == 6){ %>
+		<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style_ie.css" />
+		<![endif]-->
+		<script type="text/javascript" src="/javascripts/modernizr.custom.48780.js"></script>
+		<% } %>
 		<!-- script -->
-		<script type='text/javascript' src='/libs/jquery/jquery.js'></script>
-		<script type='text/javascript' src='/libs/bootstrap/js/bootstrap.js'></script>
 		<script src="http://a.tbcdn.cn/s/kissy/1.2.0/??kissy-min.js"> </script>
-		<script type='text/javascript' src='/javascripts/masonry.min.js'></script>
-		<script type='text/javascript' src='/javascripts/app/base.js'></script>
+		
+		<script type='text/javascript' src='/javascripts/app/base-min.js'></script>
+		<script type='text/javascript' src='/javascripts/app/modernizr-2.5.3.js'></script>
 		<title><%= config.description %></title>
+		
+		<script type="text/javascript">
+	    var S = KISSY, DOM = S.DOM,Event = S.Event;	doc = document;
+	    KISSY.config({
+	        packages:[
+	            {
+	                name:"car", //包名
+	                tag:"20120528",//时间戳, 添加在动态脚本路径后面, 用于更新包内模块代码
+	                path:"/javascripts/app", //包对应路径, 相对路径指相对于当前页面路径
+	                charset:"utf-8"//包里模块文件编码格式
+	            }
+	        ],
+	        map:[
+	             [/(.+car\/.+)-min.js(\?[^?]+)?$/, "$1.js$2"]
+	         ]
+	    });
+		</script>
 	</head>
-	<body>
-		<!-- navbar -->
-		<div class='navbar'>
-			<div class='navbar-inner'>
-				<div class='container'>
-					<a class='brand' href='/'><%= config.name %></a>
-					<form id='search_form' class='navbar-search'>
-						<input type='text' id='q' name='q' class='search-query span3'/>
-					</form>
-					<ul class='nav pull-right'>
-						<li><a href='/'>首页</a></li>	
-						<li><a href='/about'>关于</a></li>
-						<li class='divider-vertical'></li>	
-					
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- wrapper -->	
-		<div id='wrapper'>
-			<div id='main'>
-				<%- body %>
-			</div>
-			<div class='cl cr'></div>
-		</div>
-		<div id='backtotop'>回到顶部</div>
-		<!-- footer -->
-		<div id='footer'>
-			<div id='footer_main'>
-				<div class='fr'>
-				</div>
-				<div>
-					<strong><a class='dark' href='/about'>关于</a></strong>
-					&nbsp;&nbsp;|&nbsp;&nbsp; 
-					<strong><a class='dark' href='/faq'>FAQ</a></strong>
-					&nbsp;&nbsp;|&nbsp;&nbsp; 
-				</div>
-				<div class='sep10'></div>
-				<div class='col_fade'>
-					©2012<br>版本: <%= config.version %><br>由<a href='http://cnodejs.net' target='_blank'> NAE </a>为 <%= config.name %> 提供动力
-				</div>
-			</div>
-		</div>
+	<body id="body" data-page="contact">
+		<form name="form1" method="post" action="/" id="form1">
+			<div id="container" class="dark"  >	
+            <div class="center loading" id="J_Loading" style="display: none; "></div>
+             <%- body %>	
+     	</div>   
+	</form>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="/libs/isotope-min.js"></script>
+    <script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2c5f7f6e79350e2e168af57006b1e6ad' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+
 	</body>
 </html>	

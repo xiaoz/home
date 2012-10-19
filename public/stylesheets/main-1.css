@@ -1,0 +1,557 @@
+fo, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+html, body {
+	height: 100%;
+	width: 100%;	
+	overflow: hidden;
+	
+	font-family:"微软雅黑";
+	font-size:12px;
+					
+}
+input, select { vertical-align: middle; }
+body { font:13px/1.231 sans-serif; *font-size:small; }
+select, input, textarea, button { font:99% sans-serif; }
+a:hover, a:active { outline: none; }
+ol { list-style-type: decimal; }
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+small { font-size: 85%; }
+td { vertical-align: top; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+pre {
+  white-space: pre; white-space: pre-wrap; word-wrap: break-word;
+  padding: 15px;
+}
+textarea { overflow: auto; }
+.ie6 legend, .ie7 legend { margin-left: -7px; } 
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+button, input, select, textarea { margin: 0; }
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+::-moz-selection { background: #f32837; color:#fff; text-shadow: none; }
+::selection { background: #f32837; color:#fff; text-shadow: none; }
+a:link { -webkit-tap-highlight-color: #FF5E99; }
+button {  width: auto; overflow: visible; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+body, select, input, textarea { color: #444; }
+a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+*:focus {
+	outline: 0 none;
+	-moz-outline: 0 none;
+}
+.afterfout { visibility: visible !important; }
+/**
+ * Primary styles
+ *
+ * Author: 	Carnation Zrt.
+ *			Schmíz Péter
+ *			2011
+ */
+ @font-face {
+    font-family: 'ChevinBold';
+    src: url("../fonts/chevin-bold-wf-webfont.eot");
+    src: url("../fonts/chevin-bold-wf-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/chevin-bold-wf-webfont.woff") format("woff"),
+         url("../fonts/chevin-bold-wf-webfont.ttf") format("truetype"),
+		 url("../fonts/chevin-bold-wf-webfont.svgz#ChevinStdBold") format("svg"),
+         url("../fonts/chevin-bold-wf-webfont.svg#ChevinStdBold") format("svg");
+    font-weight: bold;
+    font-style: normal;
+}
+body.red *::-moz-selection { background: #f32837; }
+body.red *::selection { background: #f32837; }
+body.blue *::-moz-selection { background: #00aad2; }
+body.blue *::selection { background: #00aad2; }
+body.yellow *::-moz-selection { background: #ffd600; color: #333; }
+body.yellow *::selection { background: #ffd600; color: #333; }
+body.purple *::-moz-selection { background: #4b116f; }
+body.purple *::selection { background: #4b116f; }
+html, body {
+	height: 100%;
+	width: 100%;	
+	overflow: hidden;
+}
+body {
+	-webkit-font-smoothing: antialiased;
+	text-shadow: none;
+}
+html.tablet, html.tablet body {
+	overflow: visible;
+	min-height: 100%;
+	height: auto;
+	-webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;	
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;	
+}
+/* tart: Recommended Isotope styles */
+/**** Isotope Filtering ****/
+.isotope-item {
+  z-index: 199;
+}
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+/**** Isotope CSS3 transitions ****/
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+/**** disabling Isotope CSS3 transitions ****/
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+/* End: Recommended Isotope styles */
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+/* The Magnificent Clearfix: nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+html.tablet a { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+body > form {
+	/*height: 100%;*/
+}
+form{
+	width: 750px;
+	overflow: hidden;
+	height: 560px;
+	margin :0 auto
+}
+#container {
+	width: 750px;
+	height: 560px;
+	overflow: hidden;
+	z-index: 9;
+}
+html.tablet #container {
+	min-height: 100%;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	display: block;
+}
+	
+#contact {
+	position: absolute;
+	top: 0px;
+	width: 750px;
+	min-height: 320px;
+	height: 560px;
+	z-index: 99;
+	-moz-opacity:0.8;
+	opacity: 0.8; /* 支持CSS3的浏览器（FF 1.5也支持）*/
+   -khtml-opacity: 0.8;
+}
+	#contact .wrapper {
+		
+		margin: 0px auto 0 auto;
+		display: block;
+		height: 560px;
+		padding: 0 0 0px 0;
+		position: relative;
+		overflow: hidden;
+		z-index: 198
+	}
+	
+#contact .element {
+  width: 119px;
+  height: 106px;
+  margin: 3px 3px;
+  overflow: hidden;
+  color: #222;
+  z-index: 200
+}
+#contact .large .element1 {
+  width: 369px;
+  height: 330px;
+  overflow: hidden;
+  z-index: 200
+}
+#contact .element1 {
+  width: 119px;
+  height: 106px;
+  margin: 3px 3px;
+  float: left;
+  overflow: hidden;
+  color: #222;
+  -webkit-border-top-right-radius: 1.2em;
+      -moz-border-radius-topright: 1.2em;
+          border-radius: 0 1.2em 0 0;
+          z-index: 200;
+          behavior: url(http://abing.wuseyu.cn:10080/PIE.htc); 
+}
+#contact .corner-stamp1{
+width: 244px;
+  height: 106px;
+  margin: 3px 3px;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  background: #888;
+  color: #222;
+   z-index: 200;
+  -webkit-border-top-right-radius: 1.2em;
+      -moz-border-radius-topright: 1.2em;
+          border-radius: 0 1.2em 0 0;
+           behavior: url(http://abing.wuseyu.cn:10080pp.com/PIE.htc); 
+}
+#contact .element .col1  { 
+	background: #488091;
+  	filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity:0.5;
+    opacity:0.5;
+    z-index: 10;
+    -pie-background: rgba(72,128,145,0.3); ; /*PIE*/
+}
+#contact .element .col2  { background: #F80; background: hsl(  36, 100%, 50%); }
+#contact .element.col3  { background: #F09;  }
+#contact .element.col4  { background: #0F0; background: hsl( 108, 100%, 50%); }
+#contact .element.col5  { background: #0F8; background: hsl( 144, 100%, 50%); }
+#contact .element.col6  { background: #0FF; background: hsl( 180, 100%, 50%); }
+#contact .element.col7   { background: #08F; background: hsl( 216, 100%, 50%); }
+#contact .element.col8  { background: #00F; background: hsl( 252, 100%, 50%); }
+#contact .element.col10  {
+    background: #252628; 
+    -pie-background: rgba(37,38,40,.8); ; /*PIE*/
+}
+#contact .element * {
+  position: absolute;
+  margin: 0;
+  z-index: 9999
+}
+#contact .element .symbol {
+	top:5px;
+	left:25px;
+ 	width:60px;
+ 	height:60px;
+ 	border: 1px solid grey;
+}
+#contact .element.large .symbol {
+  display: none;
+}
+#contact .element .bbb {
+	display: none;
+}
+#contact .element.large .bbb {
+display:block;
+  width: 350px;
+  height:300px;
+   top:20px;
+  left:10px;
+  font-size: 0.34em;
+  *font-size: 0.3em;
+	font-family: "微软雅黑";
+	color: black;
+}
+#contact .element.symbol .smallImg {
+  width: 60px;
+  height:60px;
+  display: block;
+}
+#contact .element.large .symbol .smallImg {
+  display: none
+}
+#contact .element .symbol .largeImg {
+  display: none
+}
+#contact .element.large .largeImg {
+  width: 192px;
+  height:auto;
+  display: block;
+  float: left;
+  position: relative;
+  margin : 0px 5px 5px 0px;
+  border: 1px solid grey;
+  border-radius : 10px;
+           behavior: url(http://abing.wuseyu.cn:10080/PIE.htc); 
+}
+#contact .element.fake .symbol {
+  color: #000;
+}
+#contact .element .name {
+  left: 0.4em;
+  bottom: 0.8em;
+  *bottom: 0.4em;
+  font-size:12px;
+  *font-size: 1.0em;
+  font-family:"微软雅黑"; 
+}
+#contact .element.large .name {
+  left: 0.4em;
+  bottom: 0.2em;
+  font-size: 0.8em;
+  font-weight: bold;
+  font-family:"微软雅黑"; 
+}
+#contact .element .weight {
+  font-size: 0.9em;
+  left: 0.5em;
+  bottom: 0.5em;
+  font-family: 'ChevinBold', Arial;
+  
+  
+}
+#contact .element .number {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: rgba(192,240,0,1);
+  right: 0.5em;
+  top: 0.0em;
+}
+#contact .element .detail {
+	display: none;
+}
+#contact .element.large .detail {
+	display: block;
+  	right: 0.25em;
+  	top: 4.0em;
+  	color: hsla(0,0%,0%,.7);
+  	width:190px;
+  	font-size: 0.34em;
+  	font-family:"微软雅黑"; 
+  	
+}
+#contact .element .more1 {
+	display: block;
+	right: 0em;
+	top: 0.2em;
+	font-weight: bold;
+	color: rgba(0, 0, 0, .7);
+	width: 200px;
+	font-size: 5em;
+	cursor: pointer;
+	font-family: 'ChevinBold', Arial;
+  		
+}
+#contact .element.large .more1 {
+	display: none;
+}
+#contact .element.large,
+.variable-sizes .element.large,
+.variable-sizes .element.large.width2.height2 {
+  font-size: 3.0em;
+  width: 369px;
+  height: 330px;
+  z-index: 100;
+}
+.element:hover .more1 {
+	 text-shadow:
+    0 0 10px white,
+    0 0 10px white;
+  color: white;
+}
+.element:hover .weight {
+	 text-shadow:
+    0 0 10px white,
+    0 0 10px white
+  ;
+  color: white;
+}
+.element:hover {
+  cursor: pointer;
+}
+.element:hover h2 {
+  text-shadow:0 0 10px white,0 0 10px white;
+  color: white;
+  behavior: url(http://moon.cnodejs.net:10080/PIE.htc); 
+}
+.loading {
+background-image: url("../images/loading.gif");
+background-position: 0 0;
+width: 60px;
+height: 60px;
+margin-top: 100px;
+margin-bottom: 50px;
+}	
+#contact .wrapper .load-more {
+    width       : 244px;
+	height      : 80px;
+	display     : block;
+	position    : absolute;
+	margin      : 15px 0px 0px 5px ;
+	padding     : 0;
+	left        : 0;
+	cursor      : pointer;
+	overflow    : hidden;
+}
+#contact .wrapper .load-more .shine {
+	position   : absolute;
+	width      : 150px;
+	height     : 190px;
+	background : url("../images/bg_loadmore_shine.png") 0px 0px no-repeat;
+	top        : -40px;
+	left       : 109px;
+	z-index    : 99;
+}
+#contact .wrapper .load-more .label {
+	width              : 65px;
+	position           : absolute;
+	height             : 80px;
+	line-height        : 80px;
+	color              : #fff;
+	font-family        : 'ChevinBold', Helvetica, Arial;
+	font-size          : 20px;
+	left               : 0px;
+	text-transform     : uppercase;
+	
+	-moz-transition    : left 0.2s ease;
+	-webkit-transition : left 0.2s ease;
+	-o-transition      : left 0.2s ease;
+	transition         : left 0.2s ease;
+}
+#contact .wrapper .load-more.dark .label { color : #333; }
+#contact .wrapper .load-more .label.load {
+	text-align : right;
+	padding    : 0 5px 0 0;
+    background:url(../images/sprite_general.png)  -160px 0px no-repeat 
+}
+#contact .wrapper .load-more:hover .label.load { background-position: -170px 0px }
+#contact .wrapper .load-more .label.more {
+	left       : 150px;
+	text-align : left;
+	padding    : 0 0 0 5px;
+    background:url(../images/sprite_general.png)  -410px 0px no-repeat 
+}
+#contact .wrapper .load-more:hover .label.more { 
+    background-position: -400px 0px
+    }
+#contact .wrapper .load-more .button {
+	width                 : 80px;
+	height                : 80px;
+	position              : absolute;
+	left                  : 70px;
+	top                   : 0;
+	-webkit-border-radius : 80px;
+	-moz-border-radius    : 80px;
+	border-radius         : 80px;
+	background-image      : linear-gradient(right top, rgb(253, 66, 57) 20%, rgb(255, 213, 0) 80%);
+	background-image      : -o-linear-gradient(right top, rgb(253, 66, 57) 20%, rgb(255, 213, 0) 80%);
+	background-image      : -moz-linear-gradient(right top, rgb(253, 66, 57) 20%, rgb(255, 213, 0) 80%);
+	background-image      : -webkit-linear-gradient(right top, rgb(253, 66, 57) 20%, rgb(255, 213, 0) 80%);
+	background-image      : -ms-linear-gradient(right top, rgb(253, 66, 57) 20%, rgb(255, 213, 0) 80%);
+	background-image      : -webkit-gradient(linear, right top, left bottom, color-stop(0.2, rgb(253, 66, 57)), color-stop(0.8, rgb(255, 213, 0)));
+    -pie-background       : linear-gradient(right top, rgb(253, 66, 57) 20%, rgb(255, 213, 0) 80%); /*PIE*/
+    behavior: url(http://abing.wuseyu.cn:10080/PIE.htc);
+}
+#contact .wrapper .load-more .button .inner-circle {
+	width                 : 56px;
+	height                : 56px;
+	background            : #000;
+	-webkit-border-radius : 56px;
+	-moz-border-radius    : 56px;
+	border-radius         : 56px;
+	position              : absolute;
+	top                   : 12px;
+	left                  : 12px;
+	-moz-transition       : all 0.2s ease;
+	-webkit-transition    : all 0.2s ease;
+	-o-transition         : all 0.2s ease;
+	transition            : all 0.2s ease;
+      behavior: url(http://abing.wuseyu.cn:10080/PIE.htc);
+}
+#contact .wrapper .load-more:hover .button .inner-circle {
+	width                 : 70px;
+	height                : 70px;
+	left                  : 5px;
+	top                   : 5px;
+	-webkit-border-radius : 70px;
+	-moz-border-radius    : 70px;
+	border-radius         : 70px;
+      behavior: url(http://abing.wuseyu.cn:10080/PIE.htc);
+}
+#contact .wrapper .load-more .button .plus {
+	background            : #fff;
+	-webkit-border-radius : 8px;
+	-moz-border-radius    : 8px;
+	border-radius         : 8px;
+	position              : absolute;
+}
+#contact .wrapper .load-more .button .plus.hor {
+	height : 8px;
+	width  : 32px;
+	left   : 24px;
+	top    : 36px;
+}
+#contact .wrapper .load-more .button .plus.ver {
+	height : 32px;
+	width  : 8px;
+	left   : 36px;
+	top    : 24px;
+}
+/*搜索时弹出框样式*/
+.messages-prompt{background:rgba(122,122,122,.5);filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#7f7A7A7A',EndColorStr='#7f7A7A7A');padding:1px;position:absolute;z-index: 1000004 ;border:1px #e4e4e4 solid}
+.messages-prompt div{ padding:10px; background:#FFF; z-index: 1000004}
+.messages-prompt .fbloader{padding:10px 0px 0 0px;text-align: center;}
+#contact .corner-stamp2{
+	  width: 119px;
+  height: 106px;
+  margin: 3px 3px;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  color: #222;
+  -webkit-border-top-right-radius: 1.2em;
+      -moz-border-radius-topright: 1.2em;
+          border-radius: 0 1.2em 0 0;
+          z-index: 200;
+            behavior: url(http://abing.wuseyu.cn:10080/PIE.htc);
+}

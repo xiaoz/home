@@ -1,251 +1,129 @@
-<style>
-.box {
-margin: 5px;
-background: #D8D5D2;
-font-size: 11px;
-line-height: 1.4em;
-float: left;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
-}
-.col2 {
-width: 350px;
-}
-.row2 {
-height: 80px;
-}
-.col1 {
-width: 170px;
-}
-.row1 {
-height: 80px;
-}
-.col3 {
-width: 530px;
-}
-.row3 {
-height: 80px;
-}
-.transitions-enabled.masonry, .transitions-enabled.masonry .masonry-brick {
--webkit-transition-duration: 0.7s;
--moz-transition-duration: 0.7s;
--o-transition-duration: 0.7s;
-transition-duration: 0.7s;
-}
-
-</style>
-<script>
-var boxMaker = {};
-
-boxMaker.lorem =[]
-boxMaker.loremLen = boxMaker.lorem.length;
-  
-boxMaker.makeBoxes = function() {
-  var boxes = [],
-    //  count = Math.random()*4;
-  		count = 10;
-  		var flag3 = false ;
-  		var flag2 = false ;
-  		var flag1 = false ;
-  do{
-  var len = Math.ceil( Math.random()*3);
-
-  if(len == 3){
-      if(flag3 == false){
-	    	for (var i=0; i < 2; i++ ) {
-	    		var box = document.createElement('div'),
-		        text = document.createTextNode( boxMaker.lorem[i].user_name );
-		        if(i == 1){
-			        len = len-2;
-		        }
-		    	box.className = 'box col'+len+' row'+len;
-		    	box.appendChild( text );
-		    	boxes.push( box );
-	    	}
-	    	flag3 =true;
-      }
-  }else if(len == 2){
-  	if(flag2 == false){
-  		var box = document.createElement('div'),
-	     	 text = document.createTextNode( boxMaker.lorem[i].user_name );
-	    box.className = 'box col'+len+' row'+len;
-	    box.appendChild( text );
-	    boxes.push( box );
-	    
-  		var type = Math.ceil( Math.random()*2);
-		if(type == 1){
-			var box = document.createElement('div'),
-  	     	 text = document.createTextNode( boxMaker.lorem[i].user_name );
-		    box.className = 'box col2 row2';
-		    box.appendChild( text );
-		    boxes.push( box );
-
-		}else{
-			for (var i=0; i < 2; i++ ) {
-	    		var box = document.createElement('div'),
-	    	      text = document.createTextNode( boxMaker.lorem[i].user_name );
-			    box.className = 'box col1 row1';
-			    box.appendChild( text );
-			    boxes.push( box );
-	    	}
-		}
-		flag2 =true;
-      }
-  }else if(len == 1){
-  	if(flag1 == false){
-  		var box = document.createElement('div'),
-    	 text = document.createTextNode( boxMaker.lorem[i].user_name );
-	   box.className = 'box col'+len+' row'+len;
-	   box.appendChild( text );
-	   boxes.push( box );
-	   var type = Math.ceil( Math.random()*3);
-
-	   if(type == 1){
-			var box = document.createElement('div'),
- 	     	text = document.createTextNode( boxMaker.lorem[i].user_name );
-		    box.className = 'box col3 row3';
-		    box.appendChild( text );
-		    boxes.push( box );
-
-		}else if(type == 2){
-			for (var i=0; i < 3; i++ ) {
-	    		var box = document.createElement('div'),
-	    	      text = document.createTextNode( boxMaker.lorem[i].user_name );
-			    box.className = 'box col1 row1';
-			    box.appendChild( text );
-			    boxes.push( box );
-	    	}
-		}else{
-			var box = document.createElement('div'),
-	    	 text = document.createTextNode( boxMaker.lorem[i].user_name );
-		   box.className = 'box col1 row1';
-		   box.appendChild( text );
-		   boxes.push( box );
-			
-   		var box = document.createElement('div'),
-   	      text = document.createTextNode( boxMaker.lorem[i].user_name );
-	    box.className = 'box col2 row2';
-	    box.appendChild( text );
-	    boxes.push( box );
-	    	
-
-		}
-      }
-  	 flag1 = true
-  }	
-
-  }while ( flag3 == false || flag2 == false || flag1 == false)
-
-
-  return boxes;
-};
-
-</script>
-<p>
-  <button id="prepend">Prepend new items</button>
-</p>
-
-
-
-	<div id='' style="border: 1px red solid; width: 760px;height: 500px;position: relative;" >
-		
-		
-		
-		<div id="container" class="" >
-		
+<section id="contact" class="nopager" data-sectionname="contact" style="background: url('/images/bg.jpg') 0px 0px repeat;">
+          <div class="wrapper clearfix" id="contact-content"  >
+                 		
+          		
+          
+        </div>		
+</section>
+<script type="text/template" id = "J_Temple">
+<div class="element   {{country}} {{current}}" data="{{index}}" id="J_Elm_{{index}}">
+  <p class="number">{{country}}</p>
+ 	 <div class="symbol">
+  		<img class="smallImg" style="width:60px;height:60px" src="{{smallImg}}" />
+ 	</div>
+ 	<div class="bbb ks-clear" >
+		<div>
+		<img class="largeImg"  src="{{largeImg}}"  style="max-height:258px" />&nbsp;&nbsp;&nbsp;&nbsp;{{detail}}
 		</div>
-		<div id="J_Paging"></div>
-		<div style=""><a href="" >返回主页</a></div>
 	</div>
-
+<h2 class="name">{{name}}</h2>
+<p class="weight">{{englishName}}</p>
+<div class="element1 {{color}}">&nbsp;</div>
+</div>
+</script>
 <script>
+var getCarUrl = '/getCarAjax';	
 	
-	var $container = $('#container');   
-	     $container.masonry({    
-		       itemSelector: '.box',    
-		       columnWidth: 10, 
-		       isAnimated: true 
-	    }); 	
-	
-
-	H.namespace("index");
-	H.add('index',function(H){
-		var S = KISSY,DOM = S.DOM, Event = S.Event;	
-	    H.index = {
-	    	paginator : null,
-	    	listItemsPaginator : null,
-	    	msg : null,
-	    	init : function() {
-	    	 	if(!H.index.msg){
-	         		H.index.msg = new H.util.Msg();
-	         	}
-		    	Event.on('#prepend','click',function(ev){
-					var submitHandle = function(o) {
-						H.index.msg.hide();
-			
-		        	    totalRecords = o.totalRecords[0].total;
-						
-						if(totalRecords > 0){
-							
-						} else {
-							
-						}
-						H.index.renderItems(o.collection);
-						var pageCount = Math.ceil(totalRecords/o.pageNum); 
-						
-						H.index.paginator = new H.widget.showPages('H.index.paginator').setRender(H.index.handlePagination).setPageCount(pageCount).printHtml('#J_Paging',2);
-			
-		        	};
-		        	var errorHandle = function(o){
-						
-			        }
-		        	H.index.msg.setMsg('正在获取宝贝，请稍候').show();
-		        	var data = '';
-					new H.widget.asyncRequest().setURI('/ajax').setMethod("GET").setHandle(submitHandle).setErrorHandle(errorHandle).setData(data).send(); 
-				})
-	        },
-	        renderItems :function(o){
-		        console.log(o)
-	        	boxMaker.lorem = o;
-	        	var $boxes = $( boxMaker.makeBoxes() ); 
-		       $container.html( $boxes ).masonry( 'reload' ); 
-
-		    },
-		    handlePagination :function(page_id){
-		    	var submitHandle = function(o) {
-					H.index.msg.hide();
-		
-	        	    totalRecords = o.totalRecords[0].total;
-					
-					if(totalRecords > 0){
-						
-					} else {
-						
-					}
-					H.index.renderItems(o.collection);
-					var pageCount = Math.ceil(totalRecords/o.pageNum); 
-					H.index.paginator.setPage(page_id).setPageCount(pageCount).printHtml('#J_Paging',2);
-	        	};
-	        	var errorHandle = function(o){
-					
-		        }
-	        	H.index.msg.setMsg('正在获取宝贝，请稍候').show();
-	        	var data = 'page_id='+page_id+'&page_size=10';
-				new H.widget.asyncRequest().setURI('/ajax').setMethod("GET").setHandle(submitHandle).setErrorHandle(errorHandle).setData(data).send(); 
-			
-
+KISSY.ready(function(S) {
+        var  DOM = S.DOM, Event = S.Event;
+	     var $container = $('#contact-content');
+	      $container.isotope({
+	        itemSelector : '.element',
+	        masonry : {       
+		         columnWidth : 125
 			}
-		    
-	    }
-	      
-	    	
-	    	
-	})
-
-		KISSY.ready(function(){
-			var S = KISSY, DOM = S.DOM, Event = S.Event;
-			 H.index.init();
-			
-		})
+	      });
+	      pageId = 1;
+          if(!msg){
+    	 	 msg = new H.util.Msg();
+		  }
+	      Event.delegate( document,'click','.element', function(ev){ 
+	    	  var data = DOM.attr(ev.currentTarget,'data');
+				if( typeof(data) != 'undefined' ){
+					var $contact = $('#contact-content');
+					 $contact.find('.large').removeClass('large');
+					 DOM.addClass(ev.currentTarget,'large');
+				     $container.isotope('reLayout'); 
+				}
+	      })
+          var msg = null;
+           if(!msg){
+         	 msg = new H.util.Msg();
+		  }
+	      var getCarAjax = function(pageId){
+     	  		var SubmitHandle = function(o) {
+                  msg.hide();    
+                     
+				var o = o.data;
+				var str = '';
+				KISSY.use('template',function(){
+	
+					str +=  '<div class="element corner-stamp2"  ><image src="/images/logo.png"/></div>'; 
+					var temp= KISSY.Template(DOM.html(DOM.get('#J_Temple')));
+					if(pageId!=4){
+						var rnum = parseInt(Math.random()*12+1);
+					}else{
+						var rnum = 0;
+					}
+					
+					KISSY.each(o.car,function(data,index){
+						data.index = index;
+						if(index == rnum){
+							data.current = 'large';
+						}else{
+							data.current = '';
+						}
+						str +=temp.render(data);
+					 })
+					 if(pageId >=4 ){
+						var d1 = "style='display:none'";
+					 }else{
+						 var d1 = "";
+					 }
+					 if(pageId <=1 ){
+						var d2 = "style='display:none'";
+					 }else{
+						 var d2 = "";
+					 }
+					 str += '<div class="element corner-stamp1 col10" ><p class="number">'+pageId+'/4</p><div class="load-more dark" style="display: block; ">'+
+                			'<span class="label load prev" '+d2+' data="'+(pageId-1)+'">&nbsp;</span> '+
+                            '<span class="label more next" '+d1+' data="'+(pageId+1)+'">&nbsp;</span> '+
+                            '<span class="button"><span class="inner-circle"></span><span class="plus hor">'+
+                			'</span><span class="plus ver"></span></span>'+
+        					'</div></div>'; 
+					 var $newEls = $(str)
+					 var $container = $('#contact-content');
+					 $container.html( $newEls ).isotope('reloadItems').isotope({ sortBy: 'original-order' }); 
+				})
+				 
+	 	    };
+	 	    var ErrorHandle = function(o){
+                 msg.hide();
+				 alert('服务器出错！！请稍后再试')
+		 	};
+            
+            msg.setMsg('正在加载中，请稍候。。。').show();
+	 	    var data = "car_id="+pageId+"&contry=aoyun";
+	 	    new H.widget.asyncRequest().setURI(getCarUrl).setMethod("GET").setHandle(SubmitHandle).setErrorHandle(ErrorHandle).setData(data).setDataType('json').send();
+	      }
+	      getCarAjax(pageId);
+	 	   
+		 	  Event.delegate(document ,'click','.prev',function(ev){
+		 		 pageId = Number(DOM.attr(ev.currentTarget,'data'));
+		 		 getCarAjax(pageId);
+		 		 pageId++;
+		 		if(pageId >4){
+					pageId =1;
+				}
+		 	  })	
+		 	 Event.delegate(document ,'click','.next ',function(ev){
+		 		 pageId = Number(DOM.attr(ev.currentTarget,'data'));
+		 		 getCarAjax(pageId);
+		 		 pageId--;
+		 		if(pageId <1){
+					pageId =1;
+				}
+		 	  })	
+		 	   
+});	
 </script>

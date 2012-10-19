@@ -1,0 +1,11 @@
+13:09:48	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by create_at asc' at line 1
+13:10:09	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by create_at asc' at line 1
+13:10:17	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by create_at asc' at line 1
+13:10:21	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by create_at asc' at line 1
+13:10:24	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by create_at asc' at line 1
+13:11:52	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by id asc' at line 1
+13:12:48	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by id asc' at line 1
+13:20:21	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Where  type = 0 and  ID>=( Select ID From user limit 0,1) limit 12' at line 1
+13:27:47	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Where  type = 0 and  ID>=( Select ID From user limit 0,1) limit 12' at line 1
+13:29:53	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Where  type = 0  limit 0 ,12' at line 1
+13:35:11	Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ID>=( Select ID From user limit 0,1) limit 12' at line 1
