@@ -48,7 +48,7 @@
 					      throw err;
 					    }  
 					payload.totalRecords = results
-				    res.end(JSON.stringify(payload));//普通的json
+				    res.json(payload);//普通的json
 				    client.end();
 				  }
 				);    
